@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+		<style type="text/css">
+			#box{
+				width:500px;
+				height: 500px;
+				background: salmon;
+			}
+		</style>
+		<script src="js/hammer.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<div id="box">
+			
+		</div>
+		<script type="text/javascript">
+			var d=document.querySelector('#box')
+			
+			var hi=new Hammer(d)
+			hi.get('pinch').set({enable:true})
+			hi.on("panleft",function(){
+				console.log("swipe left")
+			})
+			hi.on("panright",function(){
+				console.log("swipe right")
+			})
+			
+			var sc=1
+			
+			hi.on("pinchin",function(){
+				sc-=0.03
+				d.style.transform="scale('+sc+')"
+			})
+			hi.on("pinchout",function(){
+				sc+=0.03
+				d.style.transform="scale('+sc+')"
+			})
+		</script>
+		
+	</body>
+</html>
